@@ -1,5 +1,3 @@
-package QuickUnion;
-
 import java.util.Arrays;
 
 public class QuickUnionBal {
@@ -25,7 +23,8 @@ public class QuickUnionBal {
         if (size[pRoot] < size[qRoot]) {
             size[qRoot] += size[pRoot];
             id[pRoot] = qRoot;
-        } else {
+        }
+        else {
             size[pRoot] += size[qRoot];
             id[qRoot] = pRoot;
         }

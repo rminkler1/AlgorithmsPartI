@@ -1,5 +1,3 @@
-package QuickUnion;
-
 import java.util.Arrays;
 
 public class QuickUnionTest {

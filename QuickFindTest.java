@@ -1,5 +1,3 @@
-package QuickFind;
-
 import java.util.Arrays;
 
 public class QuickFindTest {
