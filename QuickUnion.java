@@ -16,7 +16,7 @@ public class QuickUnion {
         id[getRoot(p)] = getRoot(q);
     }
 
-    public Boolean connected(int p, int q) {
+    public boolean connected(int p, int q) {
         return getRoot(p) == getRoot(q);
     }
 
