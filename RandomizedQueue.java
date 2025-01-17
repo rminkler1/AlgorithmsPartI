@@ -33,6 +33,8 @@
 // operations next() and hasNext() in constant worst-case time; and construction in linear time;
 // you may (and will need to) use a linear amount of extra memory per iterator.
 
+import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.Iterator;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
@@ -125,8 +127,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         queueArray[index2] = temp;
     }
 
-    private int randIndex(int end) {
-        return (int) (Math.random() * end);
+    private int randIndex(int n) {
+        return StdRandom.uniformInt(n);
     }
 
     private class QueueIterator implements Iterator<Item> {
