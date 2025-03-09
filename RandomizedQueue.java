@@ -37,14 +37,14 @@ import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
 
-public class RandomizedQueue<Item> implements Iterable<Item> {
+public class RandomizedQueue<T> implements Iterable<T> {
 
-    private Item[] queueArray;
+    private T[] queueArray;
     private int size;
 
     // construct an empty randomized queue
     public RandomizedQueue() {
-        queueArray = (Item[]) new Object[10];
+        queueArray = (T[]) new Object[10];
         size = 0;
     }
 
@@ -59,7 +59,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // add the item
-    public void enqueue(Item item) {
+    public void enqueue(T item) {
 
         if (item == null) throw new IllegalArgumentException("enqueue parameters cannot be null");
 
@@ -69,12 +69,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // remove and return a random item
-    public Item dequeue() {
+    public T dequeue() {
 
         if (isEmpty()) throw new java.util.NoSuchElementException("No items in the queue.");
 
         swap(randIndex(size), --size);
-        Item item = queueArray[size];
+        T item = queueArray[size];
         queueArray[size] = null;
 
         if (size < queueArray.length / 3 && size > 10) {
@@ -85,7 +85,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // return a random item (but do not remove it)
-    public Item sample() {
+    public T sample() {
 
         if (isEmpty()) throw new java.util.NoSuchElementException("No items in the queue.");
 
@@ -93,16 +93,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // return an independent iterator over items in random order
-    public Iterator<Item> iterator() {
+    public Iterator<T> iterator() {
         return new QueueIterator();
     }
 
     // Double the size of the array
     private void growArray() {
-        Item[] newArray = (Item[]) new Object[queueArray.length * 2];
+        T[] newArray = (T[]) new Object[queueArray.length * 2];
 
         int i = 0;
-        for (Item item : queueArray) {
+        for (T item : queueArray) {
             newArray[i++] = item;
         }
 
@@ -111,7 +111,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // Half the size of the array
     private void shrinkArray() {
-        Item[] newArray = (Item[]) new Object[queueArray.length / 2];
+        T[] newArray = (T[]) new Object[queueArray.length / 2];
 
         for (int i = 0; i < size; i++) {
             newArray[i] = queueArray[i];
@@ -122,7 +122,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // Swap item between index1 and index2
     private void swap(int index1, int index2) {
-        Item temp = queueArray[index1];
+        T temp = queueArray[index1];
         queueArray[index1] = queueArray[index2];
         queueArray[index2] = temp;
     }
@@ -131,7 +131,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return StdRandom.uniformInt(n);
     }
 
-    private class QueueIterator implements Iterator<Item> {
+    private class QueueIterator implements Iterator<T> {
 
         int currIndex = 0;
         int[] randomizer;
@@ -158,7 +158,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
 
         @Override
-        public Item next() {
+        public T next() {
 
             if (!hasNext()) throw new java.util.NoSuchElementException(
                     "There are no more items in the queue. Use hasNext() before calling next().");

@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class QuickUnionBal {
 
     private final int[] id;
-    private final int[] size;
+    private final int[] size;       // size of the tree under the root
 
     public QuickUnionBal(int length) {
         id = new int[length];
@@ -30,7 +30,7 @@ public class QuickUnionBal {
         }
     }
 
-    public Boolean connected(int p, int q) {
+    public boolean connected(int p, int q) {
         return getRoot(p) == getRoot(q);
     }
 
